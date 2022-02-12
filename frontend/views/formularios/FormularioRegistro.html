@@ -7,10 +7,12 @@ function FormularioRegistro() {
 
   const guardarFormulario = (datosFormulario) => {
 
+    notificacionGuardando("Guardando usuario");
+
     const id = v4();
 
-    google.script.run.withSuccessHandler(resp => {
-      console.log(resp.titulo);
+    google.script.run.withSuccessHandler(({ titulo, descripcion }) => {
+      notificacionTareaTerminada(titulo, descripcion);
       form.resetFields();
     }).guardarUsuario({ id, ...datosFormulario });
   }
