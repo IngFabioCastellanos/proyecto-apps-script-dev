@@ -14,7 +14,7 @@ function FormularioRegistro() {
     google.script.run.withSuccessHandler(({ titulo, descripcion }) => {
       notificacionTareaTerminada(titulo, descripcion);
       form.resetFields();
-    }).guardarUsuario({ id, ...datosFormulario });
+    }).guardarUsuario(JSON.stringify({ id, ...datosFormulario }));
   }
 
   return (
